@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/segmentio/kafka-go/sasl"
+	"github.com/iTukaev/kafka-go/sasl"
 	"github.com/stretchr/testify/assert"
 
 	signer "github.com/aws/aws-sdk-go-v2/aws/signer/v4"
@@ -67,7 +67,7 @@ func TestAwsMskIamMechanism(t *testing.T) {
 				} else { // but we do find one
 					return // return early since the remaining assertions are irrelevant
 				}
-			} else { // if error is not expected (typical)
+			} else {            // if error is not expected (typical)
 				if err != nil { // but we do find one
 					t.Fatal(err)
 				}
