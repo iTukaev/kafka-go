@@ -757,16 +757,19 @@ func (w *Writer) partitions(ctx context.Context, topic string) (int, error) {
 	if err != nil {
 		return 0, err
 	}
+	fmt.Println(*(r.(*metadataAPI.Response)))
 	for _, t := range r.(*metadataAPI.Response).Topics {
 		if t.Name == topic {
+			fmt.Println(t.Name)
 			// This should always hit, unless kafka has a bug.
 			if t.ErrorCode != 0 {
+				fmt.Println("here 1")
 				return 0, Error(t.ErrorCode)
 			}
 			return len(t.Partitions), nil
 		}
 	}
-	fmt.Println("here")
+	fmt.Println("here 2")
 	return 0, UnknownTopicOrPartition
 }
 
